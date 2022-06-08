@@ -1,6 +1,6 @@
 # TO DO app
 
-##[Figma layouts](https://www.figma.com/file/YiMVJFIONsaJZBhhtN3c7N/Todo-app?node-id=0%3A1) 
+## [Figma layouts](https://www.figma.com/file/YiMVJFIONsaJZBhhtN3c7N/Todo-app?node-id=0%3A1) 
 
 ### Available Script
 
