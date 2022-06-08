@@ -41,13 +41,17 @@ const Container = styled.div`
 
 function App() {
   const [inputText, setInputText] = useState("");
-  
+  const [todos, setTodos] = useState([]);
   return (
     <div className="App">
       <Background>
         <Toggle />
         <Container>
-          <MainApp setInputText={setInputText}/>
+          <MainApp 
+          inputText={inputText}
+          setInputText={setInputText}
+          todos={todos}
+          setTodos={setTodos}/>
           <TasksApp />
         </Container>
       </Background>
