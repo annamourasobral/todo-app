@@ -3,6 +3,7 @@ import MainApp from './components/MainApp';
 import styled from 'styled-components';
 import TasksApp from './components/TasksApp';
 import Toggle from './components/Toggle';
+import { useState } from 'react';
 
 const Background = styled.div `
   width: 100vw;
@@ -39,12 +40,14 @@ const Container = styled.div`
 
 
 function App() {
+  const [inputText, setInputText] = useState("");
+  
   return (
     <div className="App">
       <Background>
         <Toggle />
         <Container>
-          <MainApp />
+          <MainApp setInputText={setInputText}/>
           <TasksApp />
         </Container>
       </Background>
