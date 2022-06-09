@@ -3,7 +3,7 @@ import Todo from './Todo'
 import { Edit2Outline } from '@styled-icons/evaicons-outline/Edit2Outline';
 import { DeleteBin6 } from '@styled-icons/remix-line/DeleteBin6';
 
-export default function TasksApp({ todos }) {
+export default function TasksApp({ todos, setTodos }) {
   return (
     <StyledTasksApp>
       <table>
@@ -36,7 +36,11 @@ export default function TasksApp({ todos }) {
           </button>
         </tr>
         {todos.map((todo) => (
-          <Todo text={todo.text} />
+          <Todo todo={todo}
+          text={todo.text}
+          key={todo.id} 
+          todos={todos}
+          setTodos={setTodos} />
         ))}
       </table>
     </StyledTasksApp>

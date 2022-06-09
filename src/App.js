@@ -53,7 +53,8 @@ function App() {
           todos={todos}
           setTodos={setTodos}/>
           <TasksApp 
-          todos={todos} />
+          todos={todos}
+          setTodos={setTodos} />
         </Container>
       </Background>
     </div>
