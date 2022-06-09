@@ -52,7 +52,8 @@ function App() {
           setInputText={setInputText}
           todos={todos}
           setTodos={setTodos}/>
-          <TasksApp />
+          <TasksApp 
+          todos={todos} />
         </Container>
       </Background>
     </div>
