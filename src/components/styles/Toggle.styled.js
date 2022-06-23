@@ -1,24 +1,44 @@
 import styled from "styled-components";
 
-export const StyledToggle = styled.div `
+export const StyledToggle = styled.label `
+    position: fixed;
+    display: inline-block;
     width: 115px;
     height: 35px;
-    border: 2px solid #89B0AE;
-    background-color: #FFF;
-    position: fixed;
     top: 30px;
     right: 30px;
     z-index: 999;
-    display: flex;
-    justify-content: flex-end;
 
-    #theme-btn {
-        padding: 10px 5px;
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    span {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         background-color: #89B0AE;
-        border: 2px solid #89B0AE;
-        font-size: 10px;
-        font-weight: bolder;
-        color: #FFF;
+    }
+
+    span::before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 57px;
+        left: 4px;
+        bottom:4px;
+        background-color: #FFF;
+        transition: 0.5s;
+    }
+
+    input:checked + span::before {
+        transform: translateX(50px);
+        background-color: #555B6E;
     }
 
     /* TABLET */
@@ -34,10 +54,14 @@ export const StyledToggle = styled.div `
         top: 15px;
         right: 15px;
         background-color: #FAF9F9;
-
-        #theme-btn {
-            padding: 10px 2px;
-            color: #FAF9F9;
+        
+        span::before {
+         width: 40px;
         }
+
+        input:checked + span::before {
+        transform: translateX(42px);
+        }
+
     }
 `

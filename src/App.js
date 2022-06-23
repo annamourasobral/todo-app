@@ -1,27 +1,27 @@
-import './App.css';
 import MainApp from './components/MainApp';
-import styled from 'styled-components';
 import TasksApp from './components/TasksApp';
 import Toggle from './components/Toggle';
+import styled, { ThemeProvider } from 'styled-components';
 import { useState } from 'react';
+import { darkTheme, lightTheme, GlobalStyles } from "./theme";
 
-const Background = styled.div `
+const Background = styled.div`
   width: 100vw;
   height: 100vh;
   position: relative; 
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FFF;
+  background-color: ${props => props.theme.firstBg};
 `;
+
 const Container = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
   width: 1105px;
   height: 713px;
-  background-color: #FAF9F9;
+  background-color: ${props => props.theme.secondBg};
   font-family: 'Inter', sans-serif;
   display: flex;
-
   
   /* TABLET */
   @media screen and (max-width: 992px) {
@@ -38,26 +38,35 @@ const Container = styled.div`
   }
 `;
 
-
 function App() {
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState([]);
+  const [theme, setTheme] = useState("light");
+
+  const switchTheme = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
+
   return (
-    <div className="App">
-      <Background>
-        <Toggle />
-        <Container>
-          <MainApp 
-          inputText={inputText}
-          setInputText={setInputText}
-          todos={todos}
-          setTodos={setTodos}/>
-          <TasksApp 
-          todos={todos}
-          setTodos={setTodos} />
-        </Container>
-      </Background>
-    </div>
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>  
+      <GlobalStyles />
+      <div className="App">
+        <Background className='bg'>
+          <Toggle onClick={switchTheme}/>
+          <Container className='app'>
+            <MainApp
+              inputText={inputText}
+              setInputText={setInputText}
+              todos={todos}
+              setTodos={setTodos} 
+              className='input'/>
+            <TasksApp
+              todos={todos}
+              setTodos={setTodos} />
+          </Container>
+        </Background>
+      </div>
+    </ThemeProvider>  
   );
 }
 
