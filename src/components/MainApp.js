@@ -1,5 +1,5 @@
 import { StyledMainApp } from './styles/MainApp.styled';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 
 export default function MainApp({inputText, setInputText, todos, setTodos}) {
     const inputTextHandler = (e) => {
@@ -14,6 +14,10 @@ export default function MainApp({inputText, setInputText, todos, setTodos}) {
             id:Math.round(Math.random()*1000)},])
         setInputText("");
     }
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos))
+    }, [todos])
     return (        
         <StyledMainApp>
             <div id="title-wrapper">

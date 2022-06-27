@@ -61,7 +61,7 @@ function App() {
   }, [currentTheme])
 
   return (
-    <ThemeProvider theme={currentTheme}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />
       <div className="App">
         <Background className='bg'>
