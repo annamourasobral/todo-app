@@ -27,5 +27,4 @@ export const GlobalStyles = createGlobalStyle `
     .input input {
         background-color: ${props => props.theme.inputBg};
     }
-
 `

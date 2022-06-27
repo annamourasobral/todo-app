@@ -2,7 +2,7 @@ import MainApp from './components/MainApp';
 import TasksApp from './components/TasksApp';
 import Toggle from './components/Toggle';
 import styled, { ThemeProvider } from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { darkTheme, lightTheme, GlobalStyles } from "./theme";
 
 const Background = styled.div`
@@ -52,7 +52,7 @@ function App() {
       <GlobalStyles />
       <div className="App">
         <Background className='bg'>
-          <Toggle onClick={switchTheme}/>
+          <Toggle switchTheme={switchTheme}/>
           <Container className='app'>
             <MainApp
               inputText={inputText}

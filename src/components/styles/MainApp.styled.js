@@ -23,7 +23,7 @@ export const StyledMainApp = styled.div `
         margin-top: 60px;
         font-size: 30px;
         font-weight: bolder;  
-        color: #555B6E;
+        color: ${props => props.theme.text};
     }
 
     #subtitle-wrapper {
@@ -31,7 +31,7 @@ export const StyledMainApp = styled.div `
         font-weight: 300;
         width: 275px;
         text-align: initial;
-        color: #555B6E;
+        color: ${props => props.theme.text};
     }
 
     #happy {
@@ -48,14 +48,14 @@ export const StyledMainApp = styled.div `
     input {
         width: 215px;
         height: 43px;
-        background-color: #FAF9F9;
+        background-color: ${props => props.theme.inputBg};
         border: 2px solid #89B0AE;
     }
 
     #add-task {
         background-color: #89B0AE;
         border: 2px solid #89B0AE;
-        color: #FAF9F9;
+        color: ${props => props.theme.inputBg};
         font-size: 16px;
         font-weight: bolder;
         justify-content: center;

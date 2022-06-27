@@ -19,16 +19,19 @@ export const StyledTasksApp = styled.div`
 
     td {
         padding: 15px;
+        
     }
 
     .task {
         text-align: left;
+        color: ${props => props.theme.text};
     }
 
     button {
         padding: 0;
         border: none;
-        background-color: #FAF9F9;
+        background-color: ${props => props.theme.secondBg};
+        
     }
 
     /* TABLET */
@@ -50,6 +53,11 @@ export const StyledTasksApp = styled.div`
 
         .task {
             font-size: 20px;
+            color: ${props => props.theme.text};
+        }
+
+        .update-btn, .delete-btn {
+            color: ${props => props.theme.text};
         }
     }
 
