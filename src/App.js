@@ -2,7 +2,7 @@ import MainApp from './components/MainApp';
 import TasksApp from './components/TasksApp';
 import Toggle from './components/Toggle';
 import styled, { ThemeProvider } from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { darkTheme, lightTheme, GlobalStyles } from "./theme";
 
 const Background = styled.div`
@@ -42,17 +42,30 @@ function App() {
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState([]);
   const [theme, setTheme] = useState("light");
+  const [currentTheme, setCurrentTheme] = useState(lightTheme)
 
   const switchTheme = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
+
+    if(theme === 'light') {
+      setCurrentTheme(darkTheme)
+      setTheme("dark")
+    } else {
+      setCurrentTheme(lightTheme)
+      setTheme("light")
+    }
   };
 
+  useEffect(() => {
+    console.log('currentTheme', currentTheme)
+  }, [currentTheme])
+
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>  
+    <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
       <div className="App">
         <Background className='bg'>
-          <Toggle onClick={switchTheme}/>
+          <Toggle switchTheme={switchTheme}/>
           <Container className='app'>
             <MainApp
               inputText={inputText}

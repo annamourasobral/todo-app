@@ -8,7 +8,7 @@ export const darkTheme = {
 }
   
 export const lightTheme = {
-    firstBg: "#FFF", 
+    firstBg: "#FFF",
     secondBg: "#FAF9F9",
     text: "#555B6E",
     inputBg: "#FAF9F9",
@@ -16,10 +16,10 @@ export const lightTheme = {
 
 export const GlobalStyles = createGlobalStyle `
     .bg {
-        background-color: ${props => props.theme.firstBg};
+        background-color: ${({ theme }) => theme.firstBg};
     }
 
-    .app {
+    .App {
         background-color: ${props => props.theme.secondBg};
         color: ${props => props.theme.text};
     }
