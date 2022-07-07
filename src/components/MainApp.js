@@ -1,9 +1,7 @@
 import { StyledMainApp } from './styles/MainApp.styled';
-import { useState } from 'react';
 
 export default function MainApp({inputText, setInputText, todos, setTodos}) {
     const inputTextHandler = (e) => {
-        console.log(e.target.value);
         setInputText(e.target.value);
     }
     const submitTodoHandler = (e) => {
