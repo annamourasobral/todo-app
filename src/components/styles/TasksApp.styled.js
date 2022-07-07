@@ -25,6 +25,12 @@ export const StyledTasksApp = styled.div`
         text-align: left;
     }
 
+    button {
+        padding: 0;
+        border: none;
+        background-color: #FAF9F9;
+    }
+
     /* TABLET */
     @media screen  and (min-width: 320px) {
         

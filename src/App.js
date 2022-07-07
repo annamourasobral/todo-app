@@ -3,6 +3,7 @@ import MainApp from './components/MainApp';
 import styled from 'styled-components';
 import TasksApp from './components/TasksApp';
 import Toggle from './components/Toggle';
+import { useState } from 'react';
 
 const Background = styled.div `
   width: 100vw;
@@ -39,13 +40,21 @@ const Container = styled.div`
 
 
 function App() {
+  const [inputText, setInputText] = useState("");
+  const [todos, setTodos] = useState([]);
   return (
     <div className="App">
       <Background>
         <Toggle />
         <Container>
-          <MainApp />
-          <TasksApp />
+          <MainApp 
+          inputText={inputText}
+          setInputText={setInputText}
+          todos={todos}
+          setTodos={setTodos}/>
+          <TasksApp 
+          todos={todos}
+          setTodos={setTodos} />
         </Container>
       </Background>
     </div>

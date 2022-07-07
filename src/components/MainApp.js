@@ -1,6 +1,17 @@
-import { StyledMainApp } from "./styles/MainApp.styled";
+import { StyledMainApp } from './styles/MainApp.styled';
 
-export default function MainApp() {
+export default function MainApp({inputText, setInputText, todos, setTodos}) {
+    const inputTextHandler = (e) => {
+        setInputText(e.target.value);
+    }
+    const submitTodoHandler = (e) => {
+        e.preventDefault();
+        setTodos([
+            ...todos, {text: inputText, 
+            completed: false, 
+            id:Math.round(Math.random()*1000)},])
+        setInputText("");
+    }
     return (        
         <StyledMainApp>
             <div id="title-wrapper">
@@ -11,8 +22,11 @@ export default function MainApp() {
                 <p id="subtitle">your life easier and organized, because the chores shouldn't prevent you to be<span id="happy">happy</span></p>
             </div>
             <div id="input-wrapper">
-                <input type="text" />
-                <button id='add-task'>ADD TASK</button>
+                <input type="text" 
+                value={inputText} 
+                onChange={inputTextHandler}/>
+                <button id='add-task' 
+                onClick={submitTodoHandler}>ADD TASK</button>
             </div>           
         </StyledMainApp>
     );
