@@ -18,12 +18,12 @@ export default function Todo({text, todo, todos, setTodos}) {
     }
     return (
         <StyledTodo>
-            <td className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</td>
+            <p className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</p>
             <button className="update-btn" >
-                <td><Edit2Outline size="20" className='update-btn' onClick={completeHandler}/></td>
+                <Edit2Outline size="24" className='update-btn' onClick={completeHandler}/>
             </button>
             <button className="delete-btn">
-                <td><DeleteBin6 size="20" className='delete-btn' onClick={deleteHandler} /></td>
+                <DeleteBin6 size="24" className='delete-btn' onClick={deleteHandler} />
             </button>
         </StyledTodo>
     );

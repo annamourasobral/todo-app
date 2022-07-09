@@ -2,7 +2,7 @@ import MainApp from './components/MainApp';
 import TasksApp from './components/TasksApp';
 import Toggle from './components/Toggle';
 import styled, { ThemeProvider } from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { darkTheme, lightTheme, GlobalStyles } from "./theme";
 
 const Background = styled.div`
@@ -40,7 +40,12 @@ const Container = styled.div`
 
 function App() {
   const [inputText, setInputText] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([
+  {text: "começe agora a usar", 
+  completed: false, 
+  id: 1}
+  ]);
+  const [todo, setTodo] = useState("")
   const [theme, setTheme] = useState("light");
 
   const switchTheme = () => {
@@ -57,10 +62,13 @@ function App() {
             <MainApp
               inputText={inputText}
               setInputText={setInputText}
+              todo={todo}
+              setTodo={setTodo}
               todos={todos}
               setTodos={setTodos} 
               className='input'/>
             <TasksApp
+              todo={todo}
               todos={todos}
               setTodos={setTodos} />
           </Container>

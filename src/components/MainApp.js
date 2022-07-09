@@ -1,15 +1,24 @@
 import { StyledMainApp } from './styles/MainApp.styled';
+import { useEffect } from 'react';
 
-export default function MainApp({inputText, setInputText, todos, setTodos}) {
+export default function MainApp({inputText, setInputText, todo, todos, setTodos}) {
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    },[todos]);
+    
     const inputTextHandler = (e) => {
         setInputText(e.target.value);
     }
+
     const submitTodoHandler = (e) => {
         e.preventDefault();
-        setTodos([
-            ...todos, {text: inputText, 
-            completed: false, 
-            id:Math.round(Math.random()*1000)},])
+        if (todo !== "") {
+            setTodos([
+                ...todos,
+                {text: inputText, 
+                completed: false, 
+                id:todos.length+1}
+            ])};
         setInputText("");
     }
     return (        

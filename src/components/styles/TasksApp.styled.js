@@ -17,21 +17,17 @@ export const StyledTasksApp = styled.div`
     padding-bottom: 10px;
     }
 
-    td {
+    .todo-item {
         padding: 15px;
-        
-    }
-
-    .task {
-        text-align: left;
-        color: ${props => props.theme.text};
+        font-size: 24px;
+        color: ${props => props.theme.text}
     }
 
     button {
         padding: 0;
         border: none;
         background-color: ${props => props.theme.secondBg};
-        
+        color: ${props => props.theme.text};        
     }
 
     /* TABLET */
@@ -43,21 +39,8 @@ export const StyledTasksApp = styled.div`
             margin-bottom: 30px;
         }
         
-        table {
+        .table {
             width: 455px;
-        }
-
-        td {
-            color: #555B6E;
-        }
-
-        .task {
-            font-size: 20px;
-            color: ${props => props.theme.text};
-        }
-
-        .update-btn, .delete-btn {
-            color: ${props => props.theme.text};
         }
     }
 
@@ -71,12 +54,8 @@ export const StyledTasksApp = styled.div`
             margin-bottom: 20px;
         }
         
-        table {
+        .table {
             width: 340px;
-        }
-
-        .task {
-            font-size: 16px;
         }
     }
 `
