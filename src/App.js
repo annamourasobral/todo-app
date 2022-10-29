@@ -7,41 +7,33 @@ import { darkTheme, lightTheme, GlobalStyles } from "./theme";
 
 function App() {
   const [inputText, setInputText] = useState("");
-  const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem("todos")) || []
-  );
-  const [todo, setTodo] = useState("");
+  const [todos, setTodos] = useState(() => {
+    const saved = localStorage.getItem("todos")
+    const initialValue = JSON.parse(saved)
+    return initialValue || []
+  });
   const [theme, setTheme] = useState("light");
-
+  
   const switchTheme = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
-
+    
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
-
-  const inputTextHandler = (e) => {
-    setInputText(e.target.value);
-  }
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }, [todos])
+  
 
   const submitTodoHandler = (e) => {
     e.preventDefault();
-    setTodo({
-      text: inputText,
-      completed: false,
-      id: todos.length + 1
-    },)
-    if (todo !== "") {
-      setTodos(todos => [
-        {
-          text: inputText,
-          completed: false,
-          id: todos.length + 1
-        },
-        ...todos
-      ])
-    };
+    setTodos([
+      ...todos,
+      {
+        text: inputText,
+        completed: false,
+        id: Date.now()
+      }        
+    ])  
+    localStorage.setItem("todos", JSON.stringify(todos));
     setInputText("");
   }
 
@@ -63,7 +55,7 @@ function App() {
               <div id="input-wrapper">
                 <input type="text"
                   value={inputText}
-                  onChange={inputTextHandler} />
+                  onChange={(e) => setInputText(e.target.value)} />
                 <button id='add-task'
                   onClick={submitTodoHandler}>ADD TASK</button>
               </div>
