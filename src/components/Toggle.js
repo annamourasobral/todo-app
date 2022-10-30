@@ -1,9 +1,10 @@
 import { StyledToggle } from "./styles/Toggle.styled"
 
-export default function Toggle() {
+export default function Toggle({switchTheme}) {
     return (
         <StyledToggle>
-            <div id="theme-btn">BRIGHT</div>
+            <input onClick={switchTheme} id="theme-btn" type="checkbox" ></input>
+            <span></span>
         </StyledToggle>
     )
 }
